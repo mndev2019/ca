@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  padding: 0 5rem;
+}
+
+@media(max-width:1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+/* page title */
+.page-title {
+  position: relative;
+  margin-bottom: 50px;
+ 
+}
+@media(max-width:500px){
+  .page-title {
+    margin-bottom: 30px;
+   }
+}
+.page-title h2 {
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 35px;
+  color: #050a30;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+@media (min-width: 500px) and (max-width: 1024px) {
+  .page-title h2 {
+    font-size: 30px;
+  }
+}
+@media(max-width:500px){
+  .page-title h2 {
+    font-size: 25px;
+  }
+}
+
+.page-title:before {
+  position: absolute;
+  content: '';
+  height: 2px;
+  width: 120px;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #00b0a8;
+}
+
+.page-title:after {
+  position: absolute;
+  content: '';
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #00b0a8;
+  box-shadow: 0 0 0 5px #fff;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.home-slider-area {
+  position: relative;
+  padding: 50px 0;
+  overflow: hidden;
+}
+
+.home-slider-area:before {
+  overflow: hidden;
+  width: 1402px;
+  height: 951px;
+  position: absolute;
+  left: 45%;
+  top: -300px;
+  background: url(./assets/Image/slider-bg.svg) no-repeat;
+  content: "";
+}
+
+.intro-img {
+  animation-name: animateUpDown;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+@media(min-width:1024px) and (max-width:1280px){
+  .bannerimg{
+    top:60px;
+  }
+}
+
+.qualified-img {
+  animation-name: animateUpDown;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+.intro-img .mobile {
+  animation-delay: 0.5s;
+  animation-duration: 3s;
+}
+
+@keyframes animateUpDown {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* date reminder */
+.datehead {
+  position: relative;
+  /* Ensure the :after positions correctly */
+}
+
+.datehead:after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid #00b0a8;
+  display: block;
+}
+
+.scroll-up-animation {
+  animation: scrollUp 10s linear infinite;
+}
+
+@keyframes scrollUp {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.scroll-up-animation:hover {
+  animation-play-state: paused;
+}

@@ -14,13 +14,7 @@ const ThemeNavbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
-
   const location = useLocation();
-
-
-
-
   useEffect(() => {
     // Scroll to the bottom when the page changes
     window.scrollTo({
@@ -44,10 +38,10 @@ const ThemeNavbar = () => {
       </li>
       <li>
         <NavLink
-          to="/booking"
+          to="/service"
           className={({ isActive }) => isActive ? "text-[#00b0a8]" : "hover:text-[#00b0a8]"}
         >
-          About Us
+          SERVICES
         </NavLink>
       </li>
       <li>
@@ -55,7 +49,39 @@ const ThemeNavbar = () => {
           to="/pricing"
           className={({ isActive }) => isActive ? "text-[#00b0a8]" : "hover:text-[#00b0a8]"}
         >
-          Product
+          Regulatory
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/pricing"
+          className={({ isActive }) => isActive ? "text-[#00b0a8]" : "hover:text-[#00b0a8]"}
+        >
+          Licenses
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/pricing"
+          className={({ isActive }) => isActive ? "text-[#00b0a8]" : "hover:text-[#00b0a8]"}
+        >
+          GST
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/pricing"
+          className={({ isActive }) => isActive ? "text-[#00b0a8]" : "hover:text-[#00b0a8]"}
+        >
+          Knowledge Base
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/pricing"
+          className={({ isActive }) => isActive ? "text-[#00b0a8]" : "hover:text-[#00b0a8]"}
+        >
+          Utilities
         </NavLink>
       </li>
       <li>
@@ -66,18 +92,13 @@ const ThemeNavbar = () => {
           Contact Us
         </NavLink>
       </li>
-
-
-
-
-
     </ul>
   );
 
 
   return (
     <>
-      <section className='py-4  absolute w-full z-[10]'>
+      <section className={`py-4 ${location.pathname === '/' ? 'absolute z-[10] w-full' : 'relative'}`}>
         <div className="container mx-auto w-full">
           <div className="flex justify-between items-center">
             {/* Logo */}
@@ -102,8 +123,6 @@ const ThemeNavbar = () => {
                 <CiMenuFries className="text-3xl" />
               </button>
             </div>
-
-
           </div>
         </div>
 

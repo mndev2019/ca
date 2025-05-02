@@ -16,7 +16,7 @@ const Whatwedo = () => {
     useEffect(() => {
         Aos.init({
             duration: 1000, // animation duration in ms
-          
+
         });
     }, []);
     const data = [
@@ -59,11 +59,11 @@ const Whatwedo = () => {
                 <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 mt-5">
                     {data.map((item, index) => (
                         <div
-                        key={index}
-                        className="overflow-hidden border-l-4 border-[#00b0a8] bg-[#f9f9f9] p-5 shadow-sm hover:shadow-md transition duration-300 rounded-md"
-                        data-aos="fade-up"
-                        data-aos-delay={index * 100} // 100ms delay between each item
-                    >
+                            key={index}
+                            className="overflow-hidden border-l-4 border-[#00b0a8] bg-[#f9f9f9] p-5 shadow-sm hover:shadow-md transition duration-300 rounded-md"
+                            data-aos="fade-up"
+                            data-aos-delay={index * 100} // 100ms delay between each item
+                        >
                             <div className="flex items-center gap-3 mb-2">
                                 <img
                                     src={item.icon}

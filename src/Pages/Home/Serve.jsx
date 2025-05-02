@@ -55,11 +55,11 @@ const Serve = () => {
         },
         {
             image: serve8,
-            text: " Information Technology "
+            text: " Information Technology"
         },
         {
             image: serve9,
-            text: " Manpower "
+            text: " Manpower"
         },
         {
             image: serve10,
@@ -71,7 +71,7 @@ const Serve = () => {
         },
         {
             image: serve12,
-            text: " Logistics "
+            text: " Logistics"
         },
         {
             image: serve13,
@@ -84,7 +84,7 @@ const Serve = () => {
     ]
     return (
         <>
-            <section className='bg-[#f6f6f6] lg:py-10 py-5 overflow-hidden'  >
+            <section className='bg-[#f6f6f6] lg:py-10 py-5 overflow-hidden'>
                 <div className="container w-full mx-auto">
                     <Heading title="Who" highlight="We Serve" />
                     <div className="w-[80%] mx-auto" data-aos="fade-left">

@@ -18,12 +18,12 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 
 const Serve = () => {
-     useEffect (() => {
-            Aos.init({
-              duration: 1000, // animation duration in ms
-              once: true,     // whether animation should happen only once
-            });
-          }, []);
+    useEffect(() => {
+        Aos.init({
+            duration: 1000, // animation duration in ms
+            once: true,     // whether animation should happen only once
+        });
+    }, []);
     const serve = [
         {
             image: serve1,
@@ -89,7 +89,7 @@ const Serve = () => {
                     <Heading title="Who" highlight="We Serve" />
                     <div className="w-[80%] mx-auto">
                         {/* First 10 items (2 full rows) */}
-                        <div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-y-6 gap-x-4">
+                        <div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 gap-y-6 gap-x-4">
                             {
                                 serve.slice(0, 10).map((itm, index) => (
                                     <div key={index} className="text-center pt-3">
@@ -101,10 +101,24 @@ const Serve = () => {
                         </div>
 
                         {/* Last 4 items centered in a row */}
-                        <div className="flex justify-center flex-wrap gap-x-20 gap-y-6 mt-6">
+                        {/* <div className="flex justify-center flex-wrap gap-x-20 gap-y-6 mt-6">
                             {
                                 serve.slice(10).map((itm, index) => (
                                     <div key={index} className="text-center pt-3">
+                                        <img src={itm.image} alt='image' className='mx-auto' />
+                                        <p className='text-[13px] pt-2'>{itm.text}</p>
+                                    </div>
+                                ))
+                            }
+                        </div> */}
+                        <div className="flex justify-center flex-wrap gap-x-20 gap-y-6 mt-6">
+                            {
+                                serve.slice(10).map((itm, index) => (
+                                    <div
+                                        key={index}
+                                        className={`text-center pt-3 ${index === 0 ? 'hidden md:block' : ''
+                                            }`}
+                                    >
                                         <img src={itm.image} alt='image' className='mx-auto' />
                                         <p className='text-[13px] pt-2'>{itm.text}</p>
                                     </div>

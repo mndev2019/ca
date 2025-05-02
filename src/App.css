@@ -130,6 +130,7 @@ body {
 }
 
 .datehead:after {
+  z-index: 999999;
   content: "";
   position: absolute;
   top: 100%;

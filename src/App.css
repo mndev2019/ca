@@ -2,6 +2,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  /* overflow-x: hidden; */
 }
 
 .container {
@@ -133,7 +134,7 @@ body {
   z-index: 999999;
   content: "";
   position: absolute;
-  top: 100%;
+  top: 99%;
   left: 0;
   right: 0;
   margin: auto;

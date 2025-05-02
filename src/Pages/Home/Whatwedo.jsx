@@ -16,7 +16,7 @@ const Whatwedo = () => {
     useEffect(() => {
         Aos.init({
             duration: 1000, // animation duration in ms
-            once: true,     // whether animation should happen only once
+          
         });
     }, []);
     const data = [

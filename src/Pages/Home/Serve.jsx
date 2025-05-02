@@ -21,7 +21,7 @@ const Serve = () => {
     useEffect(() => {
         Aos.init({
             duration: 1000, // animation duration in ms
-            once: true,     // whether animation should happen only once
+         
         });
     }, []);
     const serve = [
@@ -84,10 +84,10 @@ const Serve = () => {
     ]
     return (
         <>
-            <section className='bg-[#f6f6f6] lg:py-10 py-5 overflow-hidden' data-aos="fade-left" >
+            <section className='bg-[#f6f6f6] lg:py-10 py-5 overflow-hidden'  >
                 <div className="container w-full mx-auto">
                     <Heading title="Who" highlight="We Serve" />
-                    <div className="w-[80%] mx-auto">
+                    <div className="w-[80%] mx-auto" data-aos="fade-left">
                         {/* First 10 items (2 full rows) */}
                         <div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 gap-y-6 gap-x-4">
                             {
@@ -111,7 +111,7 @@ const Serve = () => {
                                 ))
                             }
                         </div> */}
-                        <div className="flex justify-center flex-wrap gap-x-20 gap-y-6 mt-6">
+                        <div className="flex justify-center flex-wrap gap-x-20 gap-y-6 mt-6 over">
                             {
                                 serve.slice(10).map((itm, index) => (
                                     <div

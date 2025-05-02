@@ -69,10 +69,17 @@ const Client = () => {
                     ))}
                 </Slider>
                 <div style={{ textAlign: "center" }}>
-                    <button className="button md:h-[40px] h-[30px] md:w-[40px] w-[30px] rounded-full border-2 border-black flex items-center justify-center absolute top-[57%] sm:left-[30px] left-[9px] hover:bg-[#00b0a8] hover:border-none hover:text-white" onClick={previous}>
-                        <FaArrowLeft  className='font-[400] '/>
+                    <button
+                        className="button md:h-[40px] h-[30px] md:w-[40px] w-[30px] rounded-full border-2 border-black flex items-center justify-center absolute top-[57%] sm:left-[30px] left-[9px] 
+               hover:bg-[#00b0a8] hover:border-none hover:text-white 
+              active:bg-[#00b0a8] active:border-none active:text-white
+                focus:bg-[#00b0a8] focus:border-none focus:text-white"
+                        onClick={previous}
+                    >
+                        <FaArrowLeft className="font-[400]" />
                     </button>
-                    <button className="button md:h-[40px] h-[30px] md:w-[40px] w-[30px] rounded-full border-2 border-black flex items-center justify-center absolute top-[57%] sm:right-[30px] right-[9px] hover:bg-[#00b0a8] hover:border-none hover:text-white" onClick={next}>
+                    <button className="button md:h-[40px] h-[30px] md:w-[40px] w-[30px] rounded-full border-2 border-black flex items-center justify-center absolute top-[57%] sm:right-[30px] right-[9px] hover:bg-[#00b0a8] hover:border-none hover:text-white active:bg-[#00b0a8] active:border-none active:text-white
+                focus:bg-[#00b0a8] focus:border-none focus:text-white"onClick={next}>
                         <FaArrowRight />
                     </button>
                 </div>

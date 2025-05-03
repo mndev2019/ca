@@ -14,6 +14,40 @@ body {
     padding: 0 2rem;
   }
 }
+/* header dropdown */
+.dropdown{
+  left: 50%;
+}
+@media(min-width:1280px) and (max-width:1500px){
+  .dropdown{
+    left: 196%;
+  }
+}
+@media(min-width:1024px) and (max-width:1280px){
+  .dropdown{
+    left: 388%;
+  }
+}
+@media(min-width:769px) and (max-width:1024px){
+  .dropdown{
+    left: 369%;
+  }
+}
+@media(min-width:600px) and (max-width:769px){
+  .dropdown{
+    left: 287%;
+  }
+}
+@media(min-width:400px) and (max-width:600px){
+  .dropdown{
+    left: 211%;
+  }
+}
+@media(min-width:300px) and (max-width:400px){
+  .dropdown{
+    left: 176%;
+  }
+}
 
 /* page title */
 .page-title {

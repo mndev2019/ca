@@ -70,7 +70,7 @@ const Service = () => {
                             ) : (
                                 <>
                                    <div className="col-span-1">
-                                        <div className="w-full  ">
+                                        <div className="w-full">
                                             <img
                                                 src={service.image}
                                                 alt="image"

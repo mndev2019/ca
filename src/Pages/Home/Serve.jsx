@@ -75,11 +75,11 @@ const Serve = () => {
         },
         {
             image: serve13,
-            text: " Automobiles "
+            text: " Automobiles"
         },
         {
             image: serve14,
-            text: " Mining "
+            text: " Mining"
         },
     ]
     return (

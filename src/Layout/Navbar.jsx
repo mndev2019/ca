@@ -63,10 +63,18 @@ const ThemeNavbar = () => {
               <div>
                 <h4 className="md:text-[14px] text-[13px] font-[600] mb-2 text-[#00b0a8]">STARTUP REGISTRATION</h4>
                 <ul className="space-y-1 *:md:text-[13px] *:text-[11px] *:font-[300]">
-                  <Link to="/sub-service">
-                  <li>Proprietorship</li>
-                  </Link>
-                 
+                  <li className="">
+                    <Link
+                      to="/sub-service"
+                      onClick={() => {
+                        setIsServicesOpen(false);
+                        setIsOpen(false);
+                      }}
+                    >
+                      Proprietorship
+                    </Link>
+                  </li>
+
                   <li>Partnership</li>
                   <li>One Person Company</li>
                   <li>Limited Liability Partnership</li>
@@ -192,7 +200,7 @@ const ThemeNavbar = () => {
 
   return (
     <>
-    {/* <section className={`py-4 ${location.pathname === '/sub-service' ? 'absolute z-[10] w-full' : 'relative'}`}> */}
+      {/* <section className={`py-4 ${location.pathname === '/sub-service' ? 'absolute z-[10] w-full' : 'relative'}`}> */}
       <section className="py-6 absolute z-[10] w-full">
         <div className="container mx-auto w-full">
           <div className="flex justify-between items-center">

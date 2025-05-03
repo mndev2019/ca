@@ -10,7 +10,7 @@ import { IoClose } from 'react-icons/io5';
 
 const ThemeNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(true);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
 
 
   const toggleMenu = () => {

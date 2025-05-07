@@ -48,6 +48,40 @@ body {
     left: 176%;
   }
 }
+.regulatorydropdown{
+  left: 50%;
+}
+@media(min-width:1165px) and (max-width:1250px){
+  .regulatorydropdown{
+    left: 90%;
+  }
+}
+@media(min-width:1024px) and (max-width:1165px){
+  .regulatorydropdown{
+    left: 141%;
+  }
+}
+@media(min-width:769px) and (max-width:1024px){
+  .regulatorydropdown{
+    left: 257%;
+  }
+}
+@media(min-width:600px) and (max-width:769px){
+  .regulatorydropdown{
+    left: 201%;
+  }
+}
+@media(min-width:400px) and (max-width:600px){
+  .regulatorydropdown{
+    left: 165%;
+  }
+}
+@media(min-width:300px) and (max-width:400px){
+  .regulatorydropdown{
+    left: 145%;
+
+  }
+}
 
 /* page title */
 .page-title {

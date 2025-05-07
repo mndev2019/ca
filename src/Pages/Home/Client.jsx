@@ -1,12 +1,26 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import Heading from '../../Component/Heading';
-import testimonial1 from '../../assets/Image/testimonial.png';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import axios from 'axios';
+import { baseUrl } from '../../Api/BaseUrl';
 
 const Client = () => {
+    const [data, setdata] = useState([]);
+    const handleget = async () => {
+        try {
+            const resp = await axios.get(`${baseUrl}testimonial`);
+            console.log(resp);
+            setdata(resp.data.data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+    useEffect(() => {
+        handleget();
+    }, []);
     let sliderRef = useRef(null);
     const next = () => {
         sliderRef.slickNext();
@@ -48,22 +62,20 @@ const Client = () => {
                     }}
                     {...settings}
                 >
-                    {[...Array(5)].map((_, index) => (
-                        <div key={index} className="px-3 ">
+                    {data.map((itm, index) => (
+                        <div key={index} className="px-3 h-full">
                             <div
-                                className="w-full bg-white p-[20px] rounded-[8px] text-center px-5"
+                                className="w-full h-full bg-white p-[20px] rounded-[8px] text-center px-5"
 
                             >
                                 <div className="mx-auto border-2 border-gray-300 h-[90px] w-[90px] rounded-full flex items-center justify-center" >
-                                    <img src={testimonial1} alt="image" className="h-[50px]" />
+                                    <img src={`${baseUrl}${itm.image}`} alt="image" className="h-[50px]" />
                                 </div>
                                 <p className="text-[.85rem] py-3">
-                                    The services rendered in proactive advice and always being
-                                    there to manage our finances is highly appreciated. The
-                                    competency of your leadership and staff is worth applauding
+                                    {itm?.short_description}
                                 </p>
-                                <p className="font-[700] text-[#00b0a8]">Indian Subsidiary</p>
-                                <p className="text-[.85rem] pt-2">Cloud Tech Services Co.</p>
+                                <p className="font-[700] text-[#00b0a8]">{itm?.name}</p>
+                                <p className="text-[.85rem] pt-2">{itm?.post}</p>
                             </div>
                         </div>
                     ))}

@@ -45,7 +45,6 @@ const Footer = () => {
                     <div className="grid grid-cols-1">
                         <div className="col-span-1 pt-10 text-center ">
                             <p className='text-white lg:text-[16px] text-[11px] font-[100] border-t border-[#bcafaf] pt-5'>© Copyright Chartered Accountants. All Rights Reserved.</p>
-
                         </div>
                     </div>
                 </div>

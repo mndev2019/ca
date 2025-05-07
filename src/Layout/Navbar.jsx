@@ -2,19 +2,93 @@ import React, { useEffect, useState } from 'react';
 // import logo from '../assets/Image/logo.jpg';
 
 
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation, useParams } from 'react-router-dom';
 
 import { CiMenuFries } from 'react-icons/ci';
 import { IoClose } from 'react-icons/io5';
+import axios from 'axios';
+import { baseUrl } from '../Api/BaseUrl';
 
 
 const ThemeNavbar = () => {
+  const { id } = useParams();
   const [isOpen, setIsOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
 
+  const [openDropdown, setOpenDropdown] = useState(false);
+  const [services, setServices] = useState([]);
+  const [serviceDetails, setServiceDetails] = useState({});
+
+  // Fetch all services
+  const getServices = async () => {
+    try {
+      const resp = await axios.get(`${baseUrl}service`);
+      setServices(resp.data.data); // assuming an array of services with id and title
+    } catch (error) {
+      console.error("Error fetching services:", error);
+    }
+  };
+
+  // Fetch service details for all services
+  const getAllServiceDetails = async () => {
+    try {
+      const details = {};
+      for (const service of services) {
+        const resp = await axios.get(`${baseUrl}service-details/by-service/${service._id}`);
+        details[service._id] = resp.data.data; // assuming data is an array of strings or objects with title
+      }
+      setServiceDetails(details);
+    } catch (error) {
+      console.error("Error fetching service details:", error);
+    }
+  };
+
+  // Fetch both on mount
+  useEffect(() => {
+    // const fetchData = async () => {
+    //   await getServices();
+    // };
+    // fetchData();
+    getServices();
+  }, []);
+
+  useEffect(() => {
+    if (services.length) {
+      getAllServiceDetails();
+    }
+  }, [services]);
+
+
+
+  //  old code
+  //   const [data, setdata] = useState([]);
+  //   const handleget = async () => {
+  //     try {
+  //       const resp = await axios.get(`${baseUrl}service`);
+  //       console.log(resp);
+  //       setdata(resp.data.data);
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   };
+
+  //   const handleservicedetail = async () => {
+  //     try {
+  //       const resp = await axios.get(`${baseUrl}service-details/by-service/68187f1910eebd7425cf7138`);
+  //       console.log(resp);
+  //       setdata(resp.data.data);
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   };
+
+  // useEffect(() => {
+  //   handleget();
+  //   handleservicedetail()
+  // }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+    setOpenDropdown(false)
   };
   const location = useLocation();
   useEffect(() => {
@@ -45,36 +119,35 @@ const ThemeNavbar = () => {
             isActive ? "text-[#00b0a8]" : "hover:text-[#00b0a8]"
           }
           onClick={(e) => {
-            e.preventDefault(); // Prevent navigation
-            setIsServicesOpen((prev) => !prev);
+            e.preventDefault();
+            setOpenDropdown((prev) => (prev === "Services" ? null : "Services"));
           }}
         >
           SERVICES
         </NavLink>
-
-        {isServicesOpen && (
+        {/* oldcode
+        {openDropdown === "Services" && (
           <div
-            className="absolute  top-[40px] -translate-x-1/2 bg-white shadow-lg p-6 w-[95vw] max-w-[1190px] flex gap-10 z-50 text-sm dropdown"
-            onMouseEnter={() => setIsServicesOpen(true)}
-            onMouseLeave={() => setIsServicesOpen(false)}
+            className="absolute  top-[40px] -translate-x-1/2 bg-white shadow-lg p-6 w-[95vw] max-w-[1190px] flex gap-10 z-50 text-sm dropdown max-h-[80vh] overflow-y-auto"
+            onMouseEnter={() => setOpenDropdown("Services")}
+            onMouseLeave={() => setOpenDropdown(null)}
           >
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 w-full">
-              {/* STARTUP REGISTRATION */}
+            
               <div>
                 <h4 className="md:text-[14px] text-[13px] font-[600] mb-2 text-[#00b0a8]">STARTUP REGISTRATION</h4>
                 <ul className="space-y-1 *:md:text-[13px] *:text-[11px] *:font-[300]">
                   <li className="">
                     <Link
-                      to="/sub-service"
+                      to={`/sub-service/${id}`}
                       onClick={() => {
-                        setIsServicesOpen(false);
+                        setOpenDropdown(false);
                         setIsOpen(false);
                       }}
                     >
                       Proprietorship
                     </Link>
                   </li>
-
                   <li>Partnership</li>
                   <li>One Person Company</li>
                   <li>Limited Liability Partnership</li>
@@ -88,7 +161,7 @@ const ThemeNavbar = () => {
                 </ul>
               </div>
 
-              {/* DIRECT TAXATION */}
+             
               <div>
                 <h4 className="text-[14px] font-[600] mb-2 text-[#00b0a8]">DIRECT TAXATION</h4>
                 <ul className="space-y-1 *:md:text-[13px] *:text-[11px] *:font-[300]">
@@ -100,7 +173,7 @@ const ThemeNavbar = () => {
                 </ul>
               </div>
 
-              {/* GOODS & SERVICE TAX */}
+            
               <div>
                 <h4 className="text-[14px] font-[600] mb-2 text-[#00b0a8]">GOODS & SERVICE TAX</h4>
                 <ul className="space-y-1 *:md:text-[13px] *:text-[11px] *:font-[300]">
@@ -114,7 +187,7 @@ const ThemeNavbar = () => {
                 </ul>
               </div>
 
-              {/* ROC COMPLIANCES */}
+            
               <div>
                 <h4 className="text-[14px] font-[600] mb-2 text-[#00b0a8]">ROC COMPLIANCES</h4>
                 <ul className="space-y-1 *:md:text-[13px] *:text-[11px] *:font-[300]">
@@ -129,7 +202,7 @@ const ThemeNavbar = () => {
                 </ul>
               </div>
 
-              {/* AUDIT & ASSURANCE */}
+           
               <div>
                 <h4 className="text-[14px] font-[600] mb-2 text-[#00b0a8]">AUDIT & ASSURANCE</h4>
                 <ul className="space-y-1 *:md:text-[13px] *:text-[11px] *:font-[300]">
@@ -143,17 +216,124 @@ const ThemeNavbar = () => {
               </div>
             </div>
           </div>
+        )}  */}
+        {openDropdown === "Services" && (
+          <div
+            className="absolute top-[40px] -translate-x-1/2 bg-white shadow-lg p-6 w-[95vw] max-w-[1190px] flex gap-10 z-50 text-sm dropdown max-h-[80vh] overflow-y-auto"
+            onMouseEnter={() => setOpenDropdown("Services")}
+            onMouseLeave={() => setOpenDropdown(null)}
+          >
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 w-full">
+              {services.map(service => (
+                <div key={service._id}>
+                  <h4 className="md:text-[14px] text-[13px] font-[600] mb-2 text-[#00b0a8]">
+                    {service.title}
+                  </h4>
+                  <ul className="space-y-1 *:md:text-[13px] *:text-[11px] *:font-[300]">
+                    {(serviceDetails[service._id] || []).map((detail, i) => (
+                      <li key={i}>
+                        <Link
+                          to={`/service_detail_url/${detail.url}`}
+                          onClick={() => {
+                            setOpenDropdown(false);
+                            setIsOpen(false);
+                            
+                          }}
+                        >
+                          {detail.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+      </li>
+      <li className="relative">
+        <NavLink
+          to="/sub-service"
+          className={({ isActive }) =>
+            isActive ? "text-[#00b0a8]" : "hover:text-[#00b0a8]"
+          }
+          onClick={(e) => {
+            e.preventDefault();
+            setOpenDropdown((prev) => (prev === "regulatory" ? null : "regulatory"));
+          }}
+        >
+          REGULATORY
+        </NavLink>
+
+        {openDropdown === "regulatory" && (
+          <div
+            className="absolute  top-[40px] -translate-x-1/2 bg-white shadow-lg p-6 w-[95vw] max-w-[1190px] flex gap-10 z-50 text-sm regulatorydropdown max-h-[80vh] overflow-y-auto"
+            onMouseEnter={() => setOpenDropdown("regulatory")}
+            onMouseLeave={() => setOpenDropdown(null)}
+          >
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
+
+              <div>
+                <h4 className="md:text-[14px] text-[13px] font-[600] mb-2 text-[#00b0a8]">RBI</h4>
+                <ul className="space-y-1 *:md:text-[13px] *:text-[11px] *:font-[300]">
+                  <li className="">
+                    <Link
+                      to="/sub-service"
+                      onClick={() => {
+                        setOpenDropdown(false);
+                        setIsOpen(false);
+                      }}
+                    >
+                      NBFC Registration
+                    </Link>
+                  </li>
+
+                  <li>Payment Gateway License</li>
+                  <li>NBFC Takeover</li>
+                  <li>NBFC Collaboration</li>
+                  <li>NBFC Account Aggregator License</li>
+                  <li>FFMC License</li>
+                  <li>Microfinance Company Registration</li>
+                  <li>Housing Finance Company Registration</li>
+                  <li>Prepaid Wallet License</li>
+                  <li>Peer to Peer Lending License</li>
+                  <li>Payment Bank License</li>
+                </ul>
+              </div>
+
+
+              <div>
+                <h4 className="text-[14px] font-[600] mb-2 text-[#00b0a8]">SEBI</h4>
+                <ul className="space-y-1 *:md:text-[13px] *:text-[11px] *:font-[300]">
+                  <li>Alternate Investment Fund Registration (AIFs)</li>
+                  <li>Mergers and Acquisitions</li>
+
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-[14px] font-[600] mb-2 text-[#00b0a8]">IRDA</h4>
+                <ul className="space-y-1 *:md:text-[13px] *:text-[11px] *:font-[300]">
+                  <li>Insurance Broker License</li>
+                  <li>Insurance Company License</li>
+                  <li>Insurance Web Aggregator License</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-[14px] font-[600] mb-2 text-[#00b0a8]">FEMA</h4>
+                <ul className="space-y-1 *:md:text-[13px] *:text-[11px] *:font-[300]">
+                  <li>Project Office Registration</li>
+                  <li>Branch Office Registration</li>
+                  <li>FEMA Compliance</li>
+                  <li>Liaison Office Registration</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         )}
       </li>
 
-      <li>
-        <NavLink
-          to="/pricing"
-          className={({ isActive }) => isActive ? "text-[#00b0a8]" : "hover:text-[#00b0a8]"}
-        >
-          Regulatory
-        </NavLink>
-      </li>
+
       <li>
         <NavLink
           to="/pricing"
@@ -164,7 +344,7 @@ const ThemeNavbar = () => {
       </li>
       <li>
         <NavLink
-          to="/pricing"
+          to="/gst"
           className={({ isActive }) => isActive ? "text-[#00b0a8]" : "hover:text-[#00b0a8]"}
         >
           GST
@@ -188,7 +368,7 @@ const ThemeNavbar = () => {
       </li>
       <li>
         <NavLink
-          to="/blogs"
+          to="/contact"
           className={({ isActive }) => isActive ? "text-[#00b0a8]" : "hover:text-[#00b0a8]"}
         >
           Contact Us
@@ -202,7 +382,7 @@ const ThemeNavbar = () => {
     <>
       {/* <section className={`py-4 ${location.pathname === '/sub-service' ? 'absolute z-[10] w-full' : 'relative'}`}> */}
       <section className="py-6 absolute z-[10] w-full">
-        <div className="container mx-auto w-full">
+        <div className="px-[3rem] mx-auto w-full">
           <div className="flex justify-between items-center">
             {/* Logo */}
             <NavLink to='/'>

@@ -14,13 +14,12 @@ const Banner = () => {
                                 <img src={left1} alt="image" className='absolute intro-img bannerimg' />
                                 <img src={left2} alt='image' className='absolute intro-img mobile bannerimg' />
                                 <img src={left3} alt='image' className='absolute bannerimg' />
-
                             </div>
                         </div>
                         <div className="lg:col-span-7 col-span-1 lg:order-2 order-1">
                             <div className='mb-0 my-4 md:mt-0 md:pl-5 text-center intro-text'>
                                 <p className='xl:text-[30px] sm:text-[25px] text-[18px] font-[700] text-[#15467c]'>
-                                    Audit, Taxation ,Fraud Prevention,<span className='sm:block'>Compliance & Advisory</span> 
+                                    Audit, Taxation ,Fraud Prevention,<span className='sm:block'>Compliance & Advisory</span>
                                 </p>
                                 <p className='lg:text-[22px] sm:text-[18px] text-[14px] font-[300]'>
                                     SERVICE EXCELLENCE + RESPONSIVE DELIVERY
@@ -29,7 +28,6 @@ const Banner = () => {
                                     CANDID OPINIONS + TRUSTED ADVISORY
                                 </p>
                             </div>
-
                         </div>
                     </div>
                 </div>

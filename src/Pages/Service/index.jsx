@@ -15,7 +15,7 @@ const Service = () => {
         },
         {
             image: tax,
-            title: "Direct taxation  .",
+            title: "Direct taxation.",
             para: "Direct taxation refers to taxes levied directly on an individual or organization’s income and wealth. We provide expert guidance on income tax planning, filing returns, and ensuring full compliance with the latest tax regulations. Our services are designed to minimize tax liabilities while staying within legal frameworks. Whether you're a salaried individual, a freelancer, or a business owner, we tailor our solutions to meet your financial objectives and ensure peace of mind."
         },
         {
@@ -38,7 +38,7 @@ const Service = () => {
         <>
             <section className="lg:py-10 py-5">
                 <div className="container mx-auto px-6">
-                    <Heading highlight="Services"/>
+                    <Heading highlight="Services" />
                     {service.map((service, index) => (
                         <div
                             className="grid md:grid-cols-2 grid-cols-1  items-center gap-8 mt-8"
@@ -47,7 +47,7 @@ const Service = () => {
                         >
                             {index % 2 === 0 ? (
                                 <>
-                                   <div className="col-span-1">
+                                    <div className="col-span-1">
                                         <div className="space-y-3">
                                             <h2 className="text-2xl font-bold text-[#00b0a8] leading-tight">
                                                 {service.title}
@@ -58,7 +58,7 @@ const Service = () => {
                                         </div>
                                     </div>
                                     <div className="col-span-1">
-                                        <div className="w-full  ">
+                                        <div className="w-full">
                                             <img
                                                 src={service.image}
                                                 alt="image"
@@ -69,7 +69,7 @@ const Service = () => {
                                 </>
                             ) : (
                                 <>
-                                   <div className="col-span-1">
+                                    <div className="col-span-1">
                                         <div className="w-full">
                                             <img
                                                 src={service.image}
@@ -88,13 +88,11 @@ const Service = () => {
                                             </p>
                                         </div>
                                     </div>
-                                  
+
                                 </>
                             )}
                         </div>
                     ))}
-                 
-
                 </div>
             </section>
         </>
